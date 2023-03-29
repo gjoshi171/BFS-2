@@ -1,0 +1,29 @@
+//Time complexity : O(n)
+//Space complexity: O(h)
+//successfully executed on leetCode
+
+//DFS left recursive
+class BinaryTreeRightSideViewLeftRecursive {
+    List<Integer> result;
+    public List<Integer> rightSideView(TreeNode root) {
+         result = new ArrayList<>();
+        helper(root, 0);
+        return result;
+       
+    }
+    private void helper(TreeNode root, int level){
+        if(root==null){
+            return;
+        }
+     
+        if(result.size()==level){
+            result.add(root.val);
+        }else{
+            result.set(level, root.val);
+        }
+        
+        helper(root.left, level+1);
+        helper(root.right, level+1);
+
+    }
+}
